@@ -8,7 +8,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 
 // mongoose.connect('mongodb://localhost/myurldatabase');
-  mongoose.connect('mongodb://heroku_28d805rb:abc123!!@ds023052.mlab.com:23052/myurldatabase', {authMechanism: 'ScramSHA1'});
+  mongoose.connect(process.env.MONGOLAB_URI, {authMechanism: 'ScramSHA1'});
   
 var db = mongoose.connection;
 
