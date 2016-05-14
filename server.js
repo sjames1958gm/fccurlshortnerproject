@@ -7,8 +7,9 @@ var randomstring = require('random-string');
 var express = require('express');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/myurldatabase');
-
+// mongoose.connect('mongodb://localhost/myurldatabase');
+  mongoose.connect('mongodb://heroku_28d805rb@ds023052.mlab.com:23052/myurldatabase');
+  
 var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
