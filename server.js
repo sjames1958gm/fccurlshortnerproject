@@ -11,7 +11,7 @@ var mongoose = require('mongoose');
 
 console.error("Here: " + JSON.stringify(process.env.MONGODB_URI));
 
-mongoose.connect(process.env.MONGOLAB_URI, {authMechanism: 'ScramSHA1'});
+mongoose.connect(process.env.MONGODB_URI, {authMechanism: 'ScramSHA1'});
   
 var db = mongoose.connection;
 
