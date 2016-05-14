@@ -1,0 +1,14 @@
+{
+  "name": "fcc-url-shortener",
+  "version": "0.1.0",
+  "description": "URL shortener project for FCC backend",
+  "main": "server.js",
+  "repository": "",
+  "author": "Stephen James <sajames1958@gmail.com>",
+  "dependencies": {
+    "express": "~3.2.4",
+    "mongoose": "^4.4.16",
+    "random-string": "^0.1.2",
+    "valid-url": "^1.0.9"
+  }
+}
