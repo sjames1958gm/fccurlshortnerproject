@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
 
 // mongoose.connect('mongodb://localhost/myurldatabase');
 
-console.error("Here: " + process.env.MONGOLAB_URI);
+console.error("Here: " + JSON.stringify(process.env));
 
 mongoose.connect(process.env.MONGOLAB_URI, {authMechanism: 'ScramSHA1'});
   
