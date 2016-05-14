@@ -1,4 +1,4 @@
-
+'use strict';
 var http = require('http');
 var path = require('path');
 var validurl = require('valid-url');
@@ -7,8 +7,7 @@ var randomstring = require('random-string');
 var express = require('express');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/myurldatabase', 
-  {server: {socketOptions: {socketTimeoutMS: 3000}}});
+mongoose.connect('mongodb://localhost/myurldatabase');
 
 var db = mongoose.connection;
 
@@ -41,7 +40,9 @@ var server = http.createServer(app);
 app.get(/^\/new\/(.*)/, function(req, res, next) {
   console.log(req.originalUrl);
   if (!validurl.isWebUri(req.params[0])) {
-    res.status(400).send("Invalid URL in request");
+    let obj = { error: "Invalid URL in request", url: req.params[0] }; 
+    res.header('Content-Type', 'application/json');
+    res.send(JSON.stringify(obj));
   }
   else {
     var rs = randomstring().toLowerCase();
@@ -52,8 +53,7 @@ app.get(/^\/new\/(.*)/, function(req, res, next) {
         res.status(500).send("Unable to save URL");
       }
       else {
-        res.header('Content-Type', 'application/json');
-        var obj = { original_url : req.params[0], short_url : shorturl};
+        let obj = { original_url : req.params[0], short_url : shorturl};
         res.send(JSON.stringify(obj));
       }
     });
